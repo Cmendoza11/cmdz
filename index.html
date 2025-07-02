@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="portfoliodes.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body id="top">
 
-  <header>
+  <!-- Header with animation -->
+  <header class="animate">
     <div class="container">
       <h1 class="logo">CJ</h1>
       <nav>
@@ -24,25 +25,26 @@
     </div>
   </header>
 
- <section class="hero">
-  <div class="container hero-flex">
-    <div class="profile-wrapper">
-      <img src="assets/cj2.jpg" alt="CJ Profile" class="profile-pic">
-      <h2>Hi, I'm <span>CJ</span></h2>
-      <p>A student developer who loves building beautiful and functional software.</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-  </div>
-</section>
-
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I’m CJ, a developer based in the Philippines who enjoys turning ideas into reality using code. My work includes full-stack systems and UI-rich applications for school and freelance projects.</p>
+  <!-- Hero section with animation -->
+  <section class="hero animate">
+    <div class="container hero-flex">
+      <div class="profile-wrapper">
+        <img src="assets/cj2.jpg" alt="CJ Profile" class="profile-pic">
+        <h2>Hi, I'm <span>CJ</span></h2>
+        <p>A student developer who loves building beautiful and functional software.</p>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
     </div>
   </section>
 
-  <section id="tech" class="section tech">
+  <section id="about" class="section animate">
+    <div class="container">
+      <h2>About Me</h2>
+      <p class="justified">Hi, I'm CJ — a student developer from the Minsu Bongabon Campus. I enjoy building, solving problems with code, and making things that just work and feel right. I'm still learning, but every project helps me grow. I'm passionate about tech and excited for what’s ahead.</p>
+    </div>
+  </section>
+
+  <section id="tech" class="section animate">
     <div class="container">
       <h2>Tech Stack</h2>
       <div class="tech-grid">
@@ -58,7 +60,7 @@
     </div>
   </section>
 
-  <section id="projects" class="section">
+  <section id="projects" class="section animate">
     <div class="container">
       <h2>Projects</h2>
       <div class="project-grid">
@@ -82,17 +84,51 @@
     </div>
   </section>
 
-  <footer id="contact">
+  <footer id="contact" class="animate">
     <div class="container">
       <h2>Contact</h2>
       <p>You can reach me through:</p>
       <ul class="contact-list">
         <li><i class="fas fa-envelope"></i> rizalina1130mendoza@gmail.com</li>
-        <li><i class="fab fa-github"></i>github.com/Cmendoza11</li>
+        <li><i class="fab fa-github"></i> github.com/Cmendoza11</li>
       </ul>
       <p class="copyright">&copy; 2025 CJ. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+  </script>
+
+  <audio id="bgMusic" src="music/musika.mp3" preload="auto" loop></audio>
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const playMusic = getQueryParam('music');
+      if (playMusic === 'true') {
+        const music = document.getElementById("bgMusic");
+        music.volume = 0.5;
+        music.play().catch((err) => {
+          console.log("Autoplay blocked:", err);
+        });
+      }
+    });
+  </script>
+
 
 </body>
 </html>
