@@ -217,6 +217,36 @@ footer {
   color: #777;
 }
 
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.achievement-card {
+  background: #0b0c10; /* same as project card */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+}
+
+.achievement-card h3 {
+  color: #4da6ff; /* same blue as project headings */
+  margin-bottom: 0.5rem;
+}
+
+.achievement-card p {
+  color: #ccc; /* same text color as projects */
+}
+
+
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
